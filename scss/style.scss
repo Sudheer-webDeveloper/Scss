@@ -1,0 +1,156 @@
+@import './varaibles';
+@import './reset';
+
+
+@function size($size){
+    @return map-get($font-weights,$size)
+} 
+
+@mixin flexCenter($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin mobile{
+    @media (max-width: $mobile){
+        @content
+    }
+};
+
+
+body{
+    background: rgb(47, 47, 47);
+    font-weight: 700;
+    @include flexCenter(row);
+    height: 100vh;
+}
+
+
+main {
+    @include flexCenter(column);
+    width: 400px;
+    background: $text-color;
+    border-radius: 20px;
+    transition: all 0.15s;
+    cursor: pointer;
+    
+    &:hover{
+        color: red;
+        transform: scale(1.05);
+    }
+     
+  
+    .image {
+      width: 100%;
+
+  
+      img {
+        width: 100%;
+        object-fit: cover;
+        height: 270px;
+        border-radius: 20px 20px 0 0;
+      }
+      
+      @include mobile{   // media query mixin
+        width: 99%;
+      }
+
+    }
+  
+    .text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+  
+      h2 {
+        font-weight: map-get($map: $font-weights, $key: bold); //map function
+        font-size: 1.8rem;
+        margin-top: 10px;
+        color: rgb(248, 24, 62);
+      }
+      h3 {
+        font-weight: size(bold);  // using function here
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        text-align: center;
+        width: 350px;
+        font-weight: map-get($map: $font-weights, $key: reuglar);
+        color: gray;
+        margin-bottom: 20px;
+      }
+    }
+  
+    .content {
+      width: 100%;
+      gap: 20px;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      font-weight: map-get($map: $font-weights, $key: reuglar);
+      background: $card-color;
+      border-radius: 0px 0px 20px 20px;
+  
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center;
+        color: $text-color;
+        padding-top: 15px;
+        justify-content: center;
+  
+        :nth-child(2) {
+          margin-bottom: 10px;
+        }
+      }
+  
+      div:nth-child(2) {
+        margin-left: 20px;
+      }
+    }
+
+
+    @include mobile{
+        flex-direction: column;
+    }
+    
+  }
+  
+
+
+  section{
+    .first, .second{
+        button{
+            margin-left: 30px;
+            padding: 10px 5px;
+            width: 120px;
+            border: none;
+            outline: none;
+            text-transform: capitalize;
+            font-size: 1rem;
+            background: $accent-color;
+            color: $text-color;
+            margin-bottom: 20px;
+        }
+    }
+
+    .second{
+        button{
+            color: black;
+        }
+    }
+  }
+
+
+ 
